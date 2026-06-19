@@ -1,15 +1,5 @@
-export default function Home() {
-  return (
-    <main className="min-h-screen flex items-center justify-center bg-slate-950 text-white">
-      <div className="text-center">
-        <h1 className="text-5xl font-bold">
-          OliveIoT Environment Monitoring Platform
-        </h1>
+import { redirect } from "next/navigation";
 
-        <p className="mt-4 text-slate-400">
-          Internship Assessment Project
-        </p>
-      </div>
-    </main>
-  );
+export default function Home() {
+  redirect("/login");
 }
