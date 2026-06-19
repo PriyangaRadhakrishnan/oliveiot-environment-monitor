@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { chartData } from "../../../data/chartData";
 
 import {
@@ -35,6 +36,12 @@ const siteComparisonData = [
 ];
 
 export default function ChartsPage() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <main className="min-h-screen bg-slate-950 text-white p-6">
       <div className="mb-8">
@@ -55,58 +62,64 @@ export default function ChartsPage() {
         </h2>
 
         <div className="h-[400px]">
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={chartData}>
-              <CartesianGrid
-                stroke="#223321"
-                strokeDasharray="4 4"
-              />
+          {isMounted ? (
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={chartData}>
+                <CartesianGrid
+                  stroke="#223321"
+                  strokeDasharray="4 4"
+                />
 
-              <XAxis
-                dataKey="time"
-                stroke="#757575"
-                tickLine={false}
-                dy={10}
-              />
+                <XAxis
+                  dataKey="time"
+                  stroke="#757575"
+                  tickLine={false}
+                  dy={10}
+                />
 
-              <YAxis
-                stroke="#757575"
-                tickLine={false}
-                dx={-10}
-              />
+                <YAxis
+                  stroke="#757575"
+                  tickLine={false}
+                  dx={-10}
+                />
 
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: "#151E14",
-                  borderColor: "#223321",
-                  borderRadius: "12px",
-                  color: "#F7F8F5"
-                }}
-              />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: "#151E14",
+                    borderColor: "#223321",
+                    borderRadius: "12px",
+                    color: "#F7F8F5"
+                  }}
+                />
 
-              <Legend wrapperStyle={{ paddingTop: "15px" }} />
+                <Legend wrapperStyle={{ paddingTop: "15px" }} />
 
-              <Line
-                type="monotone"
-                dataKey="temperature"
-                stroke="#8FC27A"
-                strokeWidth={3}
-                dot={{ strokeWidth: 2, r: 4 }}
-                activeDot={{ r: 6 }}
-                name="Temperature (°C)"
-              />
+                <Line
+                  type="monotone"
+                  dataKey="temperature"
+                  stroke="#8FC27A"
+                  strokeWidth={3}
+                  dot={{ strokeWidth: 2, r: 4 }}
+                  activeDot={{ r: 6 }}
+                  name="Temperature (°C)"
+                />
 
-              <Line
-                type="monotone"
-                dataKey="humidity"
-                stroke="#3b82f6"
-                strokeWidth={3}
-                dot={{ strokeWidth: 2, r: 4 }}
-                activeDot={{ r: 6 }}
-                name="Humidity (%)"
-              />
-            </LineChart>
-          </ResponsiveContainer>
+                <Line
+                  type="monotone"
+                  dataKey="humidity"
+                  stroke="#3b82f6"
+                  strokeWidth={3}
+                  dot={{ strokeWidth: 2, r: 4 }}
+                  activeDot={{ r: 6 }}
+                  name="Humidity (%)"
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          ) : (
+            <div className="w-full h-full bg-[#1C281B]/40 border border-[#2B3E29]/30 animate-pulse rounded-2xl flex items-center justify-center text-[#757575] text-sm font-medium">
+              Loading temperature & humidity trends...
+            </div>
+          )}
         </div>
       </div>
 
@@ -118,58 +131,64 @@ export default function ChartsPage() {
         </h2>
 
         <div className="h-[400px]">
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={chartData}>
-              <CartesianGrid
-                stroke="#223321"
-                strokeDasharray="4 4"
-              />
+          {isMounted ? (
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={chartData}>
+                <CartesianGrid
+                  stroke="#223321"
+                  strokeDasharray="4 4"
+                />
 
-              <XAxis
-                dataKey="time"
-                stroke="#757575"
-                tickLine={false}
-                dy={10}
-              />
+                <XAxis
+                  dataKey="time"
+                  stroke="#757575"
+                  tickLine={false}
+                  dy={10}
+                />
 
-              <YAxis
-                stroke="#757575"
-                tickLine={false}
-                dx={-10}
-              />
+                <YAxis
+                  stroke="#757575"
+                  tickLine={false}
+                  dx={-10}
+                />
 
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: "#151E14",
-                  borderColor: "#223321",
-                  borderRadius: "12px",
-                  color: "#F7F8F5"
-                }}
-              />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: "#151E14",
+                    borderColor: "#223321",
+                    borderRadius: "12px",
+                    color: "#F7F8F5"
+                  }}
+                />
 
-              <Legend wrapperStyle={{ paddingTop: "15px" }} />
+                <Legend wrapperStyle={{ paddingTop: "15px" }} />
 
-              <Line
-                type="monotone"
-                dataKey="aqi"
-                stroke="#f59e0b"
-                strokeWidth={3}
-                dot={{ strokeWidth: 2, r: 4 }}
-                activeDot={{ r: 6 }}
-                name="AQI"
-              />
+                <Line
+                  type="monotone"
+                  dataKey="aqi"
+                  stroke="#f59e0b"
+                  strokeWidth={3}
+                  dot={{ strokeWidth: 2, r: 4 }}
+                  activeDot={{ r: 6 }}
+                  name="AQI"
+                />
 
-              <Line
-                type="monotone"
-                dataKey="co2"
-                stroke="#C23B3B"
-                strokeWidth={3}
-                dot={{ strokeWidth: 2, r: 4 }}
-                activeDot={{ r: 6 }}
-                name="CO₂ (ppm)"
-              />
-            </LineChart>
-          </ResponsiveContainer>
+                <Line
+                  type="monotone"
+                  dataKey="co2"
+                  stroke="#C23B3B"
+                  strokeWidth={3}
+                  dot={{ strokeWidth: 2, r: 4 }}
+                  activeDot={{ r: 6 }}
+                  name="CO₂ (ppm)"
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          ) : (
+            <div className="w-full h-full bg-[#1C281B]/40 border border-[#2B3E29]/30 animate-pulse rounded-2xl flex items-center justify-center text-[#757575] text-sm font-medium">
+              Loading AQI & CO₂ trends...
+            </div>
+          )}
         </div>
       </div>
 
@@ -181,45 +200,51 @@ export default function ChartsPage() {
         </h2>
 
         <div className="h-[400px]">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={siteComparisonData}>
-              <CartesianGrid
-                stroke="#223321"
-                strokeDasharray="4 4"
-              />
+          {isMounted ? (
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={siteComparisonData}>
+                <CartesianGrid
+                  stroke="#223321"
+                  strokeDasharray="4 4"
+                />
 
-              <XAxis
-                dataKey="site"
-                stroke="#757575"
-                tickLine={false}
-                dy={10}
-              />
+                <XAxis
+                  dataKey="site"
+                  stroke="#757575"
+                  tickLine={false}
+                  dy={10}
+                />
 
-              <YAxis
-                stroke="#757575"
-                tickLine={false}
-                dx={-10}
-              />
+                <YAxis
+                  stroke="#757575"
+                  tickLine={false}
+                  dx={-10}
+                />
 
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: "#151E14",
-                  borderColor: "#223321",
-                  borderRadius: "12px",
-                  color: "#F7F8F5"
-                }}
-              />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: "#151E14",
+                    borderColor: "#223321",
+                    borderRadius: "12px",
+                    color: "#F7F8F5"
+                  }}
+                />
 
-              <Legend wrapperStyle={{ paddingTop: "15px" }} />
+                <Legend wrapperStyle={{ paddingTop: "15px" }} />
 
-              <Bar
-                dataKey="sensors"
-                fill="#557A3A"
-                radius={[6, 6, 0, 0]}
-                name="Sensors"
-              />
-            </BarChart>
-          </ResponsiveContainer>
+                <Bar
+                  dataKey="sensors"
+                  fill="#557A3A"
+                  radius={[6, 6, 0, 0]}
+                  name="Sensors"
+                />
+              </BarChart>
+            </ResponsiveContainer>
+          ) : (
+            <div className="w-full h-full bg-[#1C281B]/40 border border-[#2B3E29]/30 animate-pulse rounded-2xl flex items-center justify-center text-[#757575] text-sm font-medium">
+              Loading site-wise comparison...
+            </div>
+          )}
         </div>
       </div>
     </main>
