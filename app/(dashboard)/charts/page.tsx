@@ -49,8 +49,8 @@ export default function ChartsPage() {
 
       {/* Temperature & Humidity */}
 
-      <div className="bg-slate-900 rounded-xl p-6 mb-8">
-        <h2 className="text-xl font-semibold mb-6">
+      <div className="bg-[#151E14] border border-[#223321] rounded-2xl p-6 mb-8 shadow-xl">
+        <h2 className="text-xl font-bold mb-6 text-[#F7F8F5]">
           Temperature & Humidity Trends
         </h2>
 
@@ -58,29 +58,42 @@ export default function ChartsPage() {
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={chartData}>
               <CartesianGrid
-                stroke="#334155"
-                strokeDasharray="3 3"
+                stroke="#223321"
+                strokeDasharray="4 4"
               />
 
               <XAxis
                 dataKey="time"
-                stroke="#94a3b8"
+                stroke="#757575"
+                tickLine={false}
+                dy={10}
               />
 
               <YAxis
-                stroke="#94a3b8"
+                stroke="#757575"
+                tickLine={false}
+                dx={-10}
               />
 
-              <Tooltip />
+              <Tooltip
+                contentStyle={{
+                  backgroundColor: "#151E14",
+                  borderColor: "#223321",
+                  borderRadius: "12px",
+                  color: "#F7F8F5"
+                }}
+              />
 
-              <Legend />
+              <Legend wrapperStyle={{ paddingTop: "15px" }} />
 
               <Line
                 type="monotone"
                 dataKey="temperature"
-                stroke="#22c55e"
+                stroke="#8FC27A"
                 strokeWidth={3}
-                name="Temperature"
+                dot={{ strokeWidth: 2, r: 4 }}
+                activeDot={{ r: 6 }}
+                name="Temperature (°C)"
               />
 
               <Line
@@ -88,7 +101,9 @@ export default function ChartsPage() {
                 dataKey="humidity"
                 stroke="#3b82f6"
                 strokeWidth={3}
-                name="Humidity"
+                dot={{ strokeWidth: 2, r: 4 }}
+                activeDot={{ r: 6 }}
+                name="Humidity (%)"
               />
             </LineChart>
           </ResponsiveContainer>
@@ -97,8 +112,8 @@ export default function ChartsPage() {
 
       {/* AQI & CO2 */}
 
-      <div className="bg-slate-900 rounded-xl p-6 mb-8">
-        <h2 className="text-xl font-semibold mb-6">
+      <div className="bg-[#151E14] border border-[#223321] rounded-2xl p-6 mb-8 shadow-xl">
+        <h2 className="text-xl font-bold mb-6 text-[#F7F8F5]">
           AQI & CO₂ Trends
         </h2>
 
@@ -106,37 +121,52 @@ export default function ChartsPage() {
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={chartData}>
               <CartesianGrid
-                stroke="#334155"
-                strokeDasharray="3 3"
+                stroke="#223321"
+                strokeDasharray="4 4"
               />
 
               <XAxis
                 dataKey="time"
-                stroke="#94a3b8"
+                stroke="#757575"
+                tickLine={false}
+                dy={10}
               />
 
               <YAxis
-                stroke="#94a3b8"
+                stroke="#757575"
+                tickLine={false}
+                dx={-10}
               />
 
-              <Tooltip />
+              <Tooltip
+                contentStyle={{
+                  backgroundColor: "#151E14",
+                  borderColor: "#223321",
+                  borderRadius: "12px",
+                  color: "#F7F8F5"
+                }}
+              />
 
-              <Legend />
+              <Legend wrapperStyle={{ paddingTop: "15px" }} />
 
               <Line
                 type="monotone"
                 dataKey="aqi"
                 stroke="#f59e0b"
                 strokeWidth={3}
+                dot={{ strokeWidth: 2, r: 4 }}
+                activeDot={{ r: 6 }}
                 name="AQI"
               />
 
               <Line
                 type="monotone"
                 dataKey="co2"
-                stroke="#ef4444"
+                stroke="#C23B3B"
                 strokeWidth={3}
-                name="CO₂"
+                dot={{ strokeWidth: 2, r: 4 }}
+                activeDot={{ r: 6 }}
+                name="CO₂ (ppm)"
               />
             </LineChart>
           </ResponsiveContainer>
@@ -145,8 +175,8 @@ export default function ChartsPage() {
 
       {/* Site Comparison */}
 
-      <div className="bg-slate-900 rounded-xl p-6">
-        <h2 className="text-xl font-semibold mb-6">
+      <div className="bg-[#151E14] border border-[#223321] rounded-2xl p-6 shadow-xl">
+        <h2 className="text-xl font-bold mb-6 text-[#F7F8F5]">
           Site-wise Sensor Comparison
         </h2>
 
@@ -154,26 +184,38 @@ export default function ChartsPage() {
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={siteComparisonData}>
               <CartesianGrid
-                stroke="#334155"
-                strokeDasharray="3 3"
+                stroke="#223321"
+                strokeDasharray="4 4"
               />
 
               <XAxis
                 dataKey="site"
-                stroke="#94a3b8"
+                stroke="#757575"
+                tickLine={false}
+                dy={10}
               />
 
               <YAxis
-                stroke="#94a3b8"
+                stroke="#757575"
+                tickLine={false}
+                dx={-10}
               />
 
-              <Tooltip />
+              <Tooltip
+                contentStyle={{
+                  backgroundColor: "#151E14",
+                  borderColor: "#223321",
+                  borderRadius: "12px",
+                  color: "#F7F8F5"
+                }}
+              />
 
-              <Legend />
+              <Legend wrapperStyle={{ paddingTop: "15px" }} />
 
               <Bar
                 dataKey="sensors"
-                fill="#22c55e"
+                fill="#557A3A"
+                radius={[6, 6, 0, 0]}
                 name="Sensors"
               />
             </BarChart>
